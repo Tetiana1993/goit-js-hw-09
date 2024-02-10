@@ -71,10 +71,6 @@ const images = [
     
     const gallery = document.querySelector(".gallery");
 
-    let lightbox = new SimpleLightbox('.gallery-link', {
-        download: false,
-        close: true,
-    });
     const galleryImages = images
   .map(
     ({ preview, original, description }) =>
@@ -90,5 +86,11 @@ const images = [
   )
   .join("");
   gallery.insertAdjacentHTML("beforeend", galleryImages);
+
+  const lightbox = new SimpleLightbox('.gallery a', {
+        captions: true,
+        captionsData: 'alt',
+        captionDelay: 250,
+      });
 
   lightbox.refresh();
